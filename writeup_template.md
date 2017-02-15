@@ -7,6 +7,15 @@ Train and validate the model with a training and validation set
 Test that the model successfully drives around track one without leaving the road
 Summarize the results with a written report
 
+[//]: # (Image References)
+
+[image1]: ./images/vgg16.png "Model Visualization"
+[image2]: ./images/driving.jpg "Grayscaling"
+[image3]: ./images/recovery1.jpg "Recovery Image"
+[image4]: ./images/recovery2.jpg "Recovery Image"
+[image5]: ./images/recovery3.jpg "Recovery Image"
+[image6]: ./images/driving.jpg "Normal Image"
+[image7]: ./images/driving_flipped.jpg "Flipped Image"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -85,7 +94,7 @@ I started with the VGG-16 architecture (vgg16.py lines 18-24) and made the follo
 * Added Dropouts after the last two convolutional blocks (because GTX1080 ran out of memory with dropouts after other convolutional blocks. I could have reduced my batch size but the training time would have shot up)
 
 Here is a visualization of the VGG-16 architecture:
-![alt text][vgg16.png]
+![alt text][image1]
 
 The final model architecture  consisted of a convolution neural network with the following layers and layer sizes
 
@@ -93,7 +102,7 @@ The final model architecture  consisted of a convolution neural network with the
 
 To capture good driving behavior, I first recorded about 40,000 on track one using center lane driving. Here is an example image of center lane driving:
 
-![alt text][driving.jpg]
+![alt text][image2]
 
 I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to center the car. These images show what a recovery looks like starting from near the lane edges.
 

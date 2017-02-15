@@ -7,6 +7,15 @@ Train and validate the model with a training and validation set
 Test that the model successfully drives around track one without leaving the road
 Summarize the results with a written report
 
+[//]: # (Image References)
+
+[image1]: ./images/vgg16.png "Model Visualization"
+[image2]: ./images/driving.jpg "Grayscaling"
+[image3]: ./images/recovery1.jpg "Recovery Image"
+[image4]: ./images/recovery2.jpg "Recovery Image"
+[image5]: ./images/recovery3.jpg "Recovery Image"
+[image6]: ./images/driving.jpg "Normal Image"
+[image7]: ./images/driving_flipped.jpg "Flipped Image"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -16,8 +25,8 @@ Summarize the results with a written report
 ####1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
 My project includes the following files:
-vgg16.py containing the script to create the model
-train_car_driving.py containing the script to create and train the model
+* vgg16.py containing the script to create the model
+* train_car_driving.py containing the script to create and train the model
 * drive.py for driving the car in autonomous mode
 * candidate.h5 containing a trained convolution neural network 
 * writeup_report.md summarizing the results
@@ -79,12 +88,15 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 ####2. Final Model Architecture
 
-The final model architecture (vgg16.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes ...
+I started with the VGG-16 architecture (vgg16.py lines 18-24) and made the following modifications:
+* Replaced the last 1000-node fully-connected layer with softmax activation with a 1-node fully connected layer with linear activation
+* Added Dropouts after fully connected layer
+* Added Dropouts after the last two convolutional blocks (because GTX1080 ran out of memory with dropouts after other convolutional blocks. I could have reduced my batch size but the training time would have shot up)
 
-Here is a visualization of the architecture:
-
-
+Here is a visualization of the VGG-16 architecture:
 ![alt text][image1]
+
+The final model architecture  consisted of a convolution neural network with the following layers and layer sizes
 
 ####3. Creation of the Training Set & Training Process
 

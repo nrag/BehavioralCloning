@@ -16,6 +16,9 @@ Summarize the results with a written report
 [image5]: ./images/recovery3.jpg "Recovery Image"
 [image6]: ./images/driving.jpg "Normal Image"
 [image7]: ./images/driving_flipped.jpg "Flipped Image"
+[image8]: ./images/throttling_distribution.jpg "Distribution of throttling"
+[image9]: ./images/throttling_distribution_balance.jpg "Distribution of throttling"
+[image10]: ./images/model.png "Distribution of throttling"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -88,15 +91,18 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 ####2. Final Model Architecture
 
-I started with the VGG-16 architecture (vgg16.py lines 18-24) and made the following modifications:
+I started with the VGG-16 architecture shown below
+Here is a visualization of the VGG-16 architecture:
+![alt text][image1]
+
+I made the following modifications to the VGG-16 architecture:
 * Replaced the last 1000-node fully-connected layer with softmax activation with a 1-node fully connected layer with linear activation
 * Added Dropouts after fully connected layer
 * Added Dropouts after the last two convolutional blocks (because GTX1080 ran out of memory with dropouts after other convolutional blocks. I could have reduced my batch size but the training time would have shot up)
 
-Here is a visualization of the VGG-16 architecture:
-![alt text][image1]
+The final model architecture  consisted of a convolution neural network with the following layers and layer sizes. Here's the visualization of the model
 
-The final model architecture  consisted of a convolution neural network with the following layers and layer sizes
+![alt text][image10]
 
 ####3. Creation of the Training Set & Training Process
 
@@ -118,6 +124,11 @@ To augment the data set, I also flipped images and angles thinking that this wou
 To ensure that the data set is not skewed towards straight line driving, I collected about 10,000 samples while driving around the curves.
 
 After the collection process, I had about 67,000 number of data points. I then preprocessed this data by normalizing the data.
+Here's the distribution of samples after I collected all the data.
+![alt text][image8]
+
+I should have randomly sampled the images with throttling as zero. This would have made the sample distribution similar to this:
+![alt text][image9]
 
 I finally randomly shuffled the data set and put 33% of the data into a validation set. 
 

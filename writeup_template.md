@@ -16,8 +16,8 @@ Summarize the results with a written report
 [image5]: ./images/recovery3.jpg "Recovery Image"
 [image6]: ./images/driving.jpg "Normal Image"
 [image7]: ./images/driving_flipped.jpg "Flipped Image"
-[image8]: ./images/throttling_distribution.jpg "Distribution of throttling"
-[image9]: ./images/throttling_distribution_balance.jpg "Distribution of throttling"
+[image8]: ./images/throttling_distribution.png "Distribution of throttling"
+[image9]: ./images/throttling_distribution_balance.png "Distribution of throttling"
 [image10]: ./images/model.png "Distribution of throttling"
 
 ## Rubric Points
